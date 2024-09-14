@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=handlechat.settings.dev
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres

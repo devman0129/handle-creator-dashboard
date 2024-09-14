@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<link href="{% static 'css/note.css' %}" rel="stylesheet" />
+
+<div class="main-wrap d-flex">
+  {% include 'layout/menu.html' with page='notebook' %}
+  <div class="main-container note-container">
+    <textarea id="note-content">{{ note.message }}</textarea>
+  </div>
+</div>
+
+<script src="{% static 'js/note.js' %}"></script>
+{% endblock %}

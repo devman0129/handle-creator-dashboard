@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<div class="main-wrap d-flex">
+  {% include 'layout/menu.html' with page='dashboard' %}
+  <div class="main-container">
+    <h1 class="display-4">
+      Welcome, {{ user.first_name.title|default:'Guest' }}
+    </h1>
+    <p class="lead">This is dashboard page.</p>
+    <hr class="my-4" />
+    <p class="lead"></p>
+  </div>
+</div>
+{% endblock %}

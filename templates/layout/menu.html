@@ -1,0 +1,29 @@
+{% load static %}
+<link href="{% static 'css/menu.css' %}" rel="stylesheet" />
+<div class="menu-wrap">
+  <ul class="menu-container">
+    <li>
+      <a
+        href="{% url 'dashboard' %}"
+        class="{% if page == 'dashboard' %}active{% endif %}"
+      >
+        <span class="bi-bar-chart-line-fill"></span>
+        Welcome
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'chat' %}" class="{% if page == 'chat' %}active{% endif %}">
+        <span class="bi-chat-left-text-fill"></span>
+        Message</a
+      >
+    </li>
+    <li>
+      <a href="{% url 'notebook' %}" class="{% if page == 'notebook' %}active{% endif %}">
+        <span class="bi-sticky-fill"></span>
+        Note</a
+      >
+    </li>
+  </ul>
+
+  <img src="{% static 'images/notebook.png' %}" />
+</div>

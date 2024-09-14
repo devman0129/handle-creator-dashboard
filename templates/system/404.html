@@ -1,0 +1,13 @@
+{% block title %} 404 {% endblock title%}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome, {{user.first_name.title|default:'Guest'}}</h1>
+        <p class="lead">
+            This is 404 page.
+        </p>
+        <hr class="my-4">
+        <p class="lead">
+        </p>
+    </div>
+
+{% endblock content %}

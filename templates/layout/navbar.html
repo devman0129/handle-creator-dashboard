@@ -1,0 +1,79 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg sticky-bottom-reached">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img class="navbar-brand-icon me-2" src="{% static 'images/full-logo.svg' %}" />
+      {% comment %} <span>Handle</span> {% endcomment %}
+    </a>
+
+    {% comment %}
+    <div class="d-lg-none ms-auto me-3">
+      <a
+        href="#"
+        class="btn custom-btn custom-border-btn btn-naira btn-inverted"
+      >
+        <i class="btn-icon bi-cloud-download"></i>
+        <span>Download</span
+        ><!-- duplicated another one below for mobile -->
+      </a>
+    </div>
+    {% endcomment %}
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-lg-auto me-lg-4">
+        {% if user.is_authenticated %}
+        {% comment %} <li class="nav-item">
+          <a class="nav-link nav-home" href="{% url 'home' %}">Home</a>
+        </li> {% endcomment %}
+        <li class="nav-item">
+          <a class="nav-link nav-dashboard" href="{% url 'dashboard' %}">Welcome</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-chat" href="{% url 'chat' %}">Message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-notebook" href="{% url 'notebook' %}">Note</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-logout" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Sign in</a>
+        </li>
+        {% endif %}
+      </ul>
+
+      {% comment %}
+      <div class="d-none d-lg-block">
+        <a
+          href="#"
+          class="btn custom-btn custom-border-btn btn-naira btn-inverted"
+        >
+          <i class="btn-icon bi-cloud-download"></i>
+          <span>Download</span
+          ><!-- duplicated above one for mobile -->
+        </a>
+      </div>
+      {% endcomment %}
+    </div>
+  </div>
+</nav>
+
+{% load static %}
+
+<script src="{% static 'js/navbar.js' %}"></script>

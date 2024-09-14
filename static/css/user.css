@@ -1,0 +1,33 @@
+
+.auto-container {
+  background-size: 100% 100%;
+  min-height: calc(100vh - 88px);
+  background-image: url(/static/images/auth3.jpg);
+}
+
+.auth-card .card-header {
+  background-color: var(--primary-color);
+}
+
+.auth-card .card-header h3 {
+  color: white;
+  padding: 10px 0px;
+}
+
+.auth-card .input-group-append {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.auth-card .input-group-append button {
+  background-color: transparent !important;
+  border: none;
+}
+
+.auth-card .input-group-append button i {
+  color: #212529;
+}
+.auth-card .input-group-append button i:hover {
+  color: var(--secondary-color);
+}

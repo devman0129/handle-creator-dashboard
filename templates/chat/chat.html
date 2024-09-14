@@ -1,0 +1,85 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+
+<link href="{% static 'css/chat.css' %}" rel="stylesheet" />
+
+<div class="main-wrap d-flex">
+  {% include 'layout/menu.html' with page='chat' %}
+  <div class="main-container chat-container">
+    <div class="chat-wrapper">
+      <section class="msger">
+        <header class="msger-header">
+          <div class="msger-header-title">
+            <i class="fas fa-comment-alt"></i> Welcome, 
+            {{ user.first_name.title|default:'Guest' }} {{ user.last_name.title|default:'Guest' }}
+          </div>
+          <div class="msger-header-options note-panel-open-btn">
+            <span><i class="bi-caret-left-fill"></i></span>
+          </div>
+        </header>
+
+        <main class="msger-chat">
+          {% for chat in chats %}
+            <div class="msg {% if chat.sender == 1 %}left{% else %}right{% endif %}-msg">
+              <div
+                class="msg-img"
+                style="
+                  background-image: url(/static/images/{% if chat.sender == 1 %}bot{% else %}user{% endif %}.png);
+                "
+              ></div>
+
+              <div class="msg-bubble">
+                <div class="msg-info">
+                  <div class="msg-info-name">{% if chat.sender == 1 %}Handle Bot{% else %}{{ user.first_name.title }}{% endif %}</div>
+                  <div class="msg-info-time">{{ chat.datetime|naturaltime }}</div>
+                </div>
+
+                <div class="msg-text">
+                  {{ chat.message }}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </main>
+
+        <div class="msger-inputarea">
+          <textarea
+            contenteditable="true"
+            role="textbox"
+            dir="auto"
+            type="text"
+            class="msger-input"
+            placeholder="Enter your message..."
+          ></textarea>
+          <div class="msger-send-btn-wrap">
+            <span class="msger-send-loader loader d-none"></span>
+            <button class="msger-send-btn">
+              <i class="bi-arrow-right-circle"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="note-panel">
+      <button class="note-panel-close-btn">
+        <span><i class="bi-caret-right-fill"></i></span>
+      </button>
+      <p class="note-panel-header">Notebook</p>
+      <textarea id="note-content">{{ note.message }}</textarea>
+    </div>
+  </div>
+
+  <script src="{% static 'js/chat.js' %}"></script>
+  <script src="{% static 'js/note.js' %}"></script>
+  <script>
+    let userFirstName = "{{ user.first_name.title }}";
+    let userAvatar = "/static/images/user.png";
+    let botAvatar = "/static/images/bot.png";
+  </script>
+</div>
+{% endblock %}
